@@ -85,8 +85,11 @@ int ethernet(struct libnet_ethernet_hdr *e_hdr)
 
 int ipv4(struct libnet_ipv4_hdr *ip_hdr)
 {
-    printf("D_IP:%s\n",inet_ntoa(ip_hdr->ip_dst));
-    printf("S_IP:%s\n",inet_ntoa(ip_hdr->ip_src));
+ //   printf("D_IP:%s\n",inet_ntoa(ip_hdr->ip_dst));
+ printf("D_IP:%s\n",inet_ntop(ip_hdr->ip_dst));
+ //inet_ntoa is weak for multiple threads
+//so it doesn't fit. instead inet_ntoa to inet_ntop
+    printf("S_IP:%s\n",inet_ntop(ip_hdr->ip_src));
     return 0;
 }
 
