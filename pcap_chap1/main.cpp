@@ -18,6 +18,7 @@ int main(void)
     struct pcap_pkthdr *header; //actual packet
 
     dev=pcap_lookupdev(error_buf);//search device
+    
     if(dev==NULL)
     {
         fprintf(stderr,"No such device:%s\n",error_buf);
